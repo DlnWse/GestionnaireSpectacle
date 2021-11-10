@@ -18,16 +18,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="52.0" layoutY="72.0" prefHeight="552.0" prefWidth="393.0">
+                        <TableView fx:id="i1TvTitre" layoutX="52.0" layoutY="72.0" prefHeight="552.0" prefWidth="393.0">
                           <columns>
-                            <TableColumn prefWidth="189.0" text="title" />
-                              <TableColumn prefWidth="203.0" text="durée" />
+                            <TableColumn fx:id="i1TitleCol" prefWidth="189.0" text="title" />
+                              <TableColumn fx:id="i1DureeCol" prefWidth="203.0" text="durée" />
                           </columns>
                         </TableView>
-                        <TableView layoutX="528.0" layoutY="71.0" prefHeight="554.0" prefWidth="396.0">
+                        <TableView fx:id="i1TvGroupe" layoutX="528.0" layoutY="71.0" prefHeight="554.0" prefWidth="396.0">
                           <columns>
-                            <TableColumn prefWidth="189.0" text="Nom" />
-                              <TableColumn prefWidth="206.0" text="personne" />
+                            <TableColumn fx:id="i1NomCol" prefWidth="189.0" text="Nom" />
+                              <TableColumn fx:id="i1MemberCol" prefWidth="206.0" text="personne" />
                           </columns>
                         </TableView>
                         <Label layoutX="216.0" layoutY="23.0" text="Titre">
@@ -60,15 +60,14 @@
                         </Label>
                         <TableView layoutX="35.0" layoutY="80.0" prefHeight="535.0" prefWidth="339.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="id" />
-                            <TableColumn prefWidth="106.0" text="title" />
-                              <TableColumn prefWidth="106.0" text="time" />
+                            <TableColumn fx:id="i2TitleCol" prefWidth="234.0" text="title" />
+                              <TableColumn fx:id="i2TimeCol" prefWidth="104.0" text="time" />
                           </columns>
                         </TableView>
                         <TableView layoutX="407.0" layoutY="80.0" prefHeight="531.0" prefWidth="518.0">
                           <columns>
-                            <TableColumn prefWidth="258.0" text="Interprete" />
-                            <TableColumn prefWidth="259.0" text="Lieux de la rencontre" />
+                            <TableColumn fx:id="i2InterpreteCol" prefWidth="258.0" text="Interprete" />
+                            <TableColumn fx:id="i2LieuxCol" prefWidth="259.0" text="Lieux de la rencontre" />
                           </columns>
                         </TableView>
                      </children>
@@ -89,7 +88,7 @@
                               <Font size="33.0" />
                            </font>
                         </Label>
-                        <ChoiceBox layoutX="160.0" layoutY="107.0" prefHeight="25.0" prefWidth="210.0" />
+                        <ChoiceBox fx:id="i3CbSpecialite" layoutX="160.0" layoutY="107.0" prefHeight="25.0" prefWidth="210.0" />
                         <Label layoutX="77.0" layoutY="106.0" text="Spécialité">
                            <font>
                               <Font size="17.0" />
@@ -97,13 +96,13 @@
                         </Label>
                         <TableView layoutX="60.0" layoutY="158.0" prefHeight="423.0" prefWidth="340.0">
                           <columns>
-                            <TableColumn prefWidth="339.0" text="Nom de la rencontre" />
+                            <TableColumn fx:id="i3RencontreCol" prefWidth="339.0" text="Nom de la rencontre" />
                           </columns>
                         </TableView>
                         <TableView layoutX="504.0" layoutY="100.0" prefHeight="476.0" prefWidth="424.0">
                           <columns>
-                            <TableColumn prefWidth="213.0" text="Prenom" />
-                            <TableColumn prefWidth="210.0" text="Nom" />
+                            <TableColumn fx:id="i3FirstnameCol" prefWidth="213.0" text="Prenom" />
+                            <TableColumn fx:id="i3LastnameCol" prefWidth="210.0" text="Nom" />
                           </columns>
                         </TableView>
                      </children>
@@ -116,16 +115,16 @@
                      <children>
                         <TableView layoutX="429.0" layoutY="10.0" prefHeight="610.0" prefWidth="513.0">
                           <columns>
-                            <TableColumn prefWidth="311.0" text="Titres" />
-                            <TableColumn prefWidth="201.0" text="Pays" />
+                            <TableColumn fx:id="i4TitleCol" prefWidth="311.0" text="Titres" />
+                            <TableColumn fx:id="i4ResPaysCol" prefWidth="201.0" text="Pays" />
                           </columns>
                         </TableView>
                         <TableView layoutX="21.0" layoutY="215.0" prefHeight="404.0" prefWidth="398.0">
                           <columns>
-                            <TableColumn prefWidth="397.0" text="Pays" />
+                            <TableColumn fx:id="i4PaysCol" prefWidth="397.0" text="Pays" />
                           </columns>
                         </TableView>
-                        <TextField layoutX="117.0" layoutY="156.0" prefHeight="25.0" prefWidth="286.0" />
+                        <TextField fx:id="i4TfDuree" layoutX="117.0" layoutY="156.0" prefHeight="25.0" prefWidth="286.0" />
                         <Label layoutX="50.0" layoutY="154.0" text="Durée">
                            <font>
                               <Font size="20.0" />
@@ -146,12 +145,12 @@
                      <children>
                         <TableView layoutX="34.0" layoutY="105.0" prefHeight="503.0" prefWidth="433.0">
                           <columns>
-                            <TableColumn prefWidth="431.0" text="Rencontre" />
+                            <TableColumn fx:id="i5RencontreCol" prefWidth="431.0" text="Rencontre" />
                           </columns>
                         </TableView>
                         <TableView layoutX="506.0" layoutY="105.0" prefHeight="504.0" prefWidth="427.0">
                           <columns>
-                            <TableColumn prefWidth="425.0" text="Nom des Groupes" />
+                            <TableColumn fx:id="i5GroupeCol" prefWidth="425.0" text="Nom des Groupes" />
                           </columns>
                         </TableView>
                         <Label layoutX="176.0" layoutY="56.0" text="Rencontre">
@@ -184,12 +183,12 @@
                         </Label>
                         <TableView layoutX="38.0" layoutY="85.0" prefHeight="524.0" prefWidth="440.0">
                           <columns>
-                            <TableColumn prefWidth="439.0" text="Instruments" />
+                            <TableColumn fx:id="i6InstrumentCol" prefWidth="439.0" text="Instruments" />
                           </columns>
                         </TableView>
                         <TableView layoutX="524.0" layoutY="85.0" prefHeight="524.0" prefWidth="413.0">
                           <columns>
-                            <TableColumn prefWidth="412.0" text="Nom de la rencontre" />
+                            <TableColumn fx:id="i6RencontreCol" prefWidth="412.0" text="Nom de la rencontre" />
                           </columns>
                         </TableView>
                      </children>
@@ -202,22 +201,22 @@
                      <children>
                         <TableView layoutX="404.0" layoutY="12.0" prefHeight="607.0" prefWidth="551.0">
                           <columns>
-                            <TableColumn prefWidth="269.0" text="Nom" />
-                              <TableColumn minWidth="0.0" prefWidth="135.0" text="date debut " />
-                            <TableColumn prefWidth="146.0" text="date fin" />
+                            <TableColumn fx:id="i7RencontreCol" prefWidth="269.0" text="Nom" />
+                              <TableColumn fx:id="i7DateStartCol" minWidth="0.0" prefWidth="135.0" text="date debut " />
+                            <TableColumn fx:id="i7DateStopCol" prefWidth="146.0" text="date fin" />
                           </columns>
                         </TableView>
                         <TableView layoutX="26.0" layoutY="36.0" prefHeight="273.0" prefWidth="370.0">
                           <columns>
-                            <TableColumn prefWidth="369.0" text="Pays" />
+                            <TableColumn fx:id="i7PaysCol" prefWidth="369.0" text="Pays" />
                           </columns>
                         </TableView>
                         <TableView layoutX="26.0" layoutY="346.0" prefHeight="273.0" prefWidth="370.0">
                            <columns>
-                              <TableColumn prefWidth="369.0" text="Nom" />
+                              <TableColumn fx:id="i7GroupeNameCol" prefWidth="369.0" text="Nom" />
                            </columns>
                         </TableView>
-                        <Label layoutX="26.0" layoutY="12.0" text="Lieux">
+                        <Label layoutX="26.0" text="Lieux">
                            <font>
                               <Font size="20.0" />
                            </font>

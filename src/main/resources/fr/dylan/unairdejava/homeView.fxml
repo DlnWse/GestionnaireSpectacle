@@ -18,16 +18,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="52.0" layoutY="72.0" prefHeight="552.0" prefWidth="393.0">
+                        <TableView fx:id="i1TvTitre" layoutX="52.0" layoutY="72.0" prefHeight="552.0" prefWidth="393.0">
                           <columns>
                             <TableColumn fx:id="i1TitleCol" prefWidth="189.0" text="title" />
                               <TableColumn fx:id="i1DureeCol" prefWidth="203.0" text="durée" />
                           </columns>
                         </TableView>
-                        <TableView layoutX="528.0" layoutY="71.0" prefHeight="554.0" prefWidth="396.0">
+                        <TableView fx:id="i1TvGroupe" layoutX="528.0" layoutY="71.0" prefHeight="554.0" prefWidth="396.0">
                           <columns>
-                            <TableColumn fx:id="i1NomCol" prefWidth="189.0" text="Nom" />
-                              <TableColumn fx:id="i1MemberCol" prefWidth="206.0" text="personne" />
+                            <TableColumn fx:id="i1NomCol" prefWidth="395.0" text="Nom" />
                           </columns>
                         </TableView>
                         <Label layoutX="216.0" layoutY="23.0" text="Titre">

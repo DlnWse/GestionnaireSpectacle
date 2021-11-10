@@ -2,7 +2,6 @@ package fr.dylan.unairdejava;
 
 import fr.dylan.unairdejava.utils.ConnectionBDD;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
