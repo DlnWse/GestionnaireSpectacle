@@ -7,5 +7,6 @@ module fr.dylan.unairdejava {
 
 
     opens fr.dylan.unairdejava to javafx.fxml;
+    opens fr.dylan.unairdejava.entity to javafx.base;
     exports fr.dylan.unairdejava;
 }

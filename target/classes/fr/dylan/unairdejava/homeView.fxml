@@ -26,8 +26,7 @@
                         </TableView>
                         <TableView fx:id="i1TvGroupe" layoutX="528.0" layoutY="71.0" prefHeight="554.0" prefWidth="396.0">
                           <columns>
-                            <TableColumn fx:id="i1NomCol" prefWidth="189.0" text="Nom" />
-                              <TableColumn fx:id="i1MemberCol" prefWidth="206.0" text="personne" />
+                            <TableColumn fx:id="i1NomCol" prefWidth="395.0" text="Nom" />
                           </columns>
                         </TableView>
                         <Label layoutX="216.0" layoutY="23.0" text="Titre">

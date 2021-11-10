@@ -2,12 +2,14 @@ package fr.dylan.unairdejava.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionBDD {
 
-    boolean connected = false;
+    private Connection connection;
+    private boolean connected = false;
 
-    public void getConnection() {
+    public void openConnection() {
         String db = "a_tune_of_java_db";
         String user = "root";
         String password = "";
@@ -15,7 +17,7 @@ public class ConnectionBDD {
 
         try {
             System.out.println(url);
-            Connection databaseLink = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(url, user, password);
             System.out.println("Connected");
             connected = true;
 
@@ -23,15 +25,25 @@ public class ConnectionBDD {
             e.printStackTrace();
             System.out.println("Erreur de connection");
         }
+    }
 
+    public void closeConnection() {
+        try {
+            connection.close();
+            connected = false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean isConnected() {
         return connected;
     }
 
+    public Connection getConnection() {return connection;}
+
     public ConnectionBDD() {
-        getConnection();
+        openConnection();
     }
 
 }
