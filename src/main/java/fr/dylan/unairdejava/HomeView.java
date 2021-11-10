@@ -5,6 +5,7 @@ import fr.dylan.unairdejava.entity.piece;
 import fr.dylan.unairdejava.utils.ConnectionBDD;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -12,8 +13,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import java.sql.Connection;
@@ -22,6 +26,8 @@ import java.sql.ResultSet;
 
 
 public class HomeView implements Initializable {
+
+    @FXML private AnchorPane root;
 
     @FXML private TableView<piece> i1TvTitre;
     @FXML private TableColumn<piece, String> i1TitleCol;
@@ -57,16 +63,45 @@ public class HomeView implements Initializable {
     @FXML private TableColumn<?, ?> i7PaysCol;
     @FXML private TableColumn<?, ?> i7RencontreCol;
 
+    private ConnectionBDD dataBaseConnection;
 
-    private piece selectedPiece = null;
-    private ObservableList<piece> data = FXCollections.observableArrayList();
+    private final ObservableList<piece> tab1Title = FXCollections.observableArrayList();
+    private final ObservableList<band> tab1Group = FXCollections.observableArrayList();
+
+    private final EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
+                piece selection = i1TvTitre.getSelectionModel().getSelectedItem();
+                getGroupsByPiece(selection.getId_piece());
+            }
+        }
+    };
+
+    private void getGroupsByPiece(int idPiece){
+        // Création de la requete d'affichage
+        String reqAffichage = String.format("CALL get_bands_playing_piece(%d)", idPiece);
+        PreparedStatement stat = null;
+        try {
+            stat = dataBaseConnection.getConnection().prepareStatement(reqAffichage);
+            ResultSet rs = stat.executeQuery();
+
+            //reinitialisation du tableview
+            tab1Group.removeAll(tab1Group);
+            while (rs.next()){
+                band band = new band(rs.getString(1));
+                tab1Group.add(band);
+            }
+            i1NomCol.setCellValueFactory(new PropertyValueFactory<band, String>("name_band"));
+            i1TvGroupe.setItems(tab1Group);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void displayTitle() {
 
         try {
-             //Connection a la BDD
-            ConnectionBDD dataBaseConnection = new ConnectionBDD();
-
 
             // Création de la requete d'affichage
             String reqAffichage = "CALL get_all_pieces()";
@@ -74,13 +109,13 @@ public class HomeView implements Initializable {
             ResultSet rs = stat.executeQuery();
 
             //reinitialisation du tableview
-            data.removeAll(data);
-            while (rs.next()){
-                System.out.println(rs.getInt(1));
-                piece piece = new piece(rs.getString(2),rs.getInt(4));
-                data.add(piece);
+            tab1Title.removeAll(tab1Title);
+            while (rs.next()) {
+                piece piece = new piece(rs.getInt(1), rs.getString(2),rs.getInt(4));
+                tab1Title.add(piece);
             }
-            dataBaseConnection.getConnection().close();
+            //dataBaseConnection.getConnection().close();
+
 
 
         }catch (Exception e){
@@ -90,8 +125,7 @@ public class HomeView implements Initializable {
 
         i1TitleCol.setCellValueFactory(new PropertyValueFactory<piece, String>("name_piece"));
         i1DureeCol.setCellValueFactory(new PropertyValueFactory<piece, Integer>("duration_piece"));
-        i1NomCol.setCellValueFactory(new PropertyValueFactory<band, String>("name_band"));
-        i1TvTitre.setItems(data);
+        i1TvTitre.setItems(tab1Title);
     }
 
     @Override
@@ -101,6 +135,10 @@ public class HomeView implements Initializable {
         assert i1NomCol != null : "fx:id=\"i1NomCol\" was not injected: check your FXML file 'homeView.fxml'.";
         assert i1TvGroupe != null : "fx:id=\"i1TvGroupe\" was not injected: check your FXML file 'homeView.fxml'.";
         assert i1TvTitre != null : "fx:id=\"i1TvTitre\" was not injected: check your FXML file 'homeView.fxml'.";
+
+        i1TvTitre.setOnMouseReleased(mouseHandler);
+
+        dataBaseConnection = new ConnectionBDD();
 
         displayTitle();
 

@@ -4,8 +4,8 @@ public class band {
     private int id_band;
     private String name_band;
 
-    public band(int id_band, String name_band) {
-        this.id_band = id_band;
+    public band(String name_band) {
+       // this.id_band = id_band;
         this.name_band = name_band;
     }
 

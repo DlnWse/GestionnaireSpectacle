@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="667.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.dylan.unairdejava.HomeView">
+<AnchorPane fx:id="root" prefHeight="667.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.dylan.unairdejava.HomeView">
    <children>
       <TabPane prefHeight="667.0" prefWidth="965.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
